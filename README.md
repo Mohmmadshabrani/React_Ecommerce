@@ -1,4 +1,4 @@
-# MERN-E-Commerce-Frontend
+<!-- # MERN-E-Commerce-Frontend
 
 MERN-E-Commerce-Frontend is the frontend of an e-commerce web application built with ReactJS ,Material UI, ContextAPI, React-router-dom
 
@@ -74,4 +74,4 @@ Contributions to the project are welcome. If you find a bug or want to add a new
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information. -->
