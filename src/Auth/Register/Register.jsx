@@ -83,7 +83,7 @@ const Register = () => {
         credentials.password
       ) {
         const sendAuth = await axios.post(
-          "http://localhost:8000/src/apis/registerUser.php",
+          "http://localhost:8000/src/apis/auth/registerUser.php",
           {
             firstName: credentials.firstName,
             lastName: credentials.lastName,

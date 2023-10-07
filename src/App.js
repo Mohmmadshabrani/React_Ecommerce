@@ -17,7 +17,6 @@ import UpdateDetails from './Pages/Update_User/UpdateDetails';
 import ForgotPasswordForm from './Auth/ForgotPassword/ForgotPasswordForm';
 import AddNewPassword from './Auth/ForgotPassword/AddNewPassword';
 import AdminLogin from './Admin/Auth/Login/AdminLogin';
-import AdminRegister from './Admin/Auth/Register/AdminRegister';
 import AdminHomePage from './Admin/Pages/AdminHomePage';
 import SingleUserPage from './Admin/Pages/SingleUserPage';
 import SingleProduct from './Admin/Pages/SingleProduct';
@@ -50,7 +49,6 @@ function App() {
 
             {/* Admin Routes */}
             <Route path="/admin/login" element={< AdminLogin />} />
-            <Route path='/admin/register' element={<AdminRegister />} />
             <Route path='/admin/home' element={<AdminHomePage />} />
             <Route path='/admin/home/user/:id' element={<SingleUserPage />} />
             <Route path='/admin/home/product/:type/:id' element={<SingleProduct />} />
