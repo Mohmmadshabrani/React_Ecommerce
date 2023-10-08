@@ -3,6 +3,7 @@ import AliceCarousel from "react-alice-carousel";
 import BannerData from "../../Helpers/HomePageBanner";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { Link } from "react-router-dom";
+
 const Carousel = () => {
   const responsive = {
     0: { items: 1 },
@@ -26,7 +27,6 @@ const Carousel = () => {
     <AliceCarousel
       animationType="fadeout"
       animationDuration={800}
-      disableButtonsControls
       infinite
       items={items}
       touchTracking

@@ -14,7 +14,7 @@ const SingleCategory = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [filterOption, setFilterOption] = useState("All");
   const [title, setTitle] = useState("All");
-  const { cat } = useParams();
+  const { id } = useParams();
   useEffect(() => {
     getCategoryProduct();
     window.scroll(0, 0);
@@ -24,8 +24,8 @@ const SingleCategory = () => {
     try {
       setIsLoading(true);
       const { data } = await axios.post(
-        `${process.env.REACT_APP_PRODUCT_TYPE}`,
-        { userType: cat }
+        "http://localhost:8000/src/apis/users/GetCategoryProducts.php",
+        id
       );
       setIsLoading(false);
       setProductData(data);
@@ -36,55 +36,55 @@ const SingleCategory = () => {
 
   const productFilter = [];
 
-  if (cat === "book") {
-    productFilter.push(
-      "All",
-      "Scifi",
-      "Business",
-      "Mystery",
-      "Cookbooks",
-      "Accessories",
-      "Price Low To High",
-      "Price High To Low",
-      "High Rated",
-      "Low Rated"
-    );
-  } else if (cat === "cloths") {
-    productFilter.push(
-      "All",
-      "Men",
-      "Women",
-      "Price Low To High",
-      "Price High To Low",
-      "High Rated",
-      "Low Rated"
-    );
-  } else if (cat === "shoe") {
-    productFilter.push(
-      "All",
-      "Running",
-      "Football",
-      "Formal",
-      "Casual",
-      "Price Low To High",
-      "Price High To Low",
-      "High Rated",
-      "Low Rated"
-    );
-  } else if (cat === "electronics") {
-    productFilter.push(
-      "All",
-      "Monitor",
-      "SSD",
-      "HDD",
-      "Price Low To High",
-      "Price High To Low",
-      "High Rated",
-      "Low Rated"
-    );
-  } else if (cat === "jewelry") {
-    productFilter.push("All");
-  }
+  productFilter.push(
+    "All",
+    "Scifi",
+    "Business",
+    "Mystery",
+    "Cookbooks",
+    "Accessories",
+    "Price Low To High",
+    "Price High To Low",
+    "High Rated",
+    "Low Rated"
+  );
+  // if (cat === "book") {
+  // } else if (cat === "cloths") {
+  //   productFilter.push(
+  //     "All",
+  //     "Men",
+  //     "Women",
+  //     "Price Low To High",
+  //     "Price High To Low",
+  //     "High Rated",
+  //     "Low Rated"
+  //   );
+  // } else if (cat === "shoe") {
+  //   productFilter.push(
+  //     "All",
+  //     "Running",
+  //     "Football",
+  //     "Formal",
+  //     "Casual",
+  //     "Price Low To High",
+  //     "Price High To Low",
+  //     "High Rated",
+  //     "Low Rated"
+  //   );
+  // } else if (cat === "electronics") {
+  //   productFilter.push(
+  //     "All",
+  //     "Monitor",
+  //     "SSD",
+  //     "HDD",
+  //     "Price Low To High",
+  //     "Price High To Low",
+  //     "High Rated",
+  //     "Low Rated"
+  //   );
+  // } else if (cat === "jewelry") {
+  //   productFilter.push("All");
+  // }
 
   const handleChange = (e) => {
     setFilterOption(e.target.value.split(" ").join("").toLowerCase());
@@ -100,7 +100,7 @@ const SingleCategory = () => {
     const filter = filterOption.toLowerCase();
     const { data } = await axios.post(
       `${process.env.REACT_APP_PRODUCT_TYPE_CATEGORY_}`,
-      { userType: cat, userCategory: filter }
+      { userType: id, userCategory: filter }
     );
     setProductData(data);
     setIsLoading(false);
@@ -181,7 +181,7 @@ const SingleCategory = () => {
           }}
         >
           {productData.map((prod) => (
-            <Link to={`/Detail/type/${cat}/${prod._id}`} key={prod._id}>
+            <Link to={`/Detail/${prod.id}/${prod.name.split(' ').join('_')}`} key={prod._id}>
               <ProductCard prod={prod} />
             </Link>
           ))}

@@ -7,40 +7,34 @@ import {
   Books,
   Jewelry,
 } from "../Assets/Images/Image";
-
-import { useState } from "react";
-
-
-let [data , setData] = useState([{}]);
-
-data = [
+const data = [
   {
     img: GroupCloth,
-    name: "Cloths"
+    name: "Cloths",
   },
   {
     img: Shoes,
-    name: "Shoe"
+    name: "Shoe",
   },
   {
     img: FemaleCloth,
-    name: "Cloths"
+    name: "Cloths",
   },
   {
     img: Electronics,
-    name: "Electronics"
+    name: "Electronics",
   },
   {
     img: MaleCloth,
-    name: "Cloths"
+    name: "Cloths",
   },
   {
     img: Books,
-    name: "Book"
+    name: "Book",
   },
   {
     img: Jewelry,
-    name: "Jewelry"
+    name: "Jewelry",
   },
 ];
 export default data;

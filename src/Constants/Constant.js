@@ -11,7 +11,7 @@ const getCart = async (setProceed, setCart, authToken) => {
 
 const getWishList = async (setProceed, setWishlistData, authToken) => {
   if (setProceed) {
-    const { data } = await axios.get(`${process.env.REACT_APP_GET_WISHLIST}`, {
+    const { data } = await axios.get(`http://localhost:8000/src/apis/users/GetCartData.php`, {
       headers: {
         Authorization: authToken,
       },
@@ -42,7 +42,7 @@ const handleClose = (setOpenAlert) => {
 };
 const getAllProducts = async (setData) => {
   try {
-    const { data } = await axios.get(process.env.REACT_APP_FETCH_PRODUCT);
+    const { data } = await axios.get('http://localhost:8000/src/apis/users/GetCartData.php');
     setData(data);
   } catch (error) {
     console.log(error);
@@ -51,7 +51,7 @@ const getAllProducts = async (setData) => {
 
 const getSingleProduct = async (setProduct, id, setLoading) => {
   const { data } = await axios.get(
-    `${process.env.REACT_APP_FETCH_PRODUCT}/${id}`
+    `http://localhost:8000/src/apis/users/GetCartData.php`
   );
   setProduct(data);
   setLoading(false);
