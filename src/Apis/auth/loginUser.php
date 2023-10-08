@@ -15,7 +15,6 @@ $stmt->bindParam(':password', $data->password);
 
 $stmt->execute();
 $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-var_dump($res);
 
 if ($stmt->rowCount() === 1)
   echo json_encode(['success' => true , 'authToken' => $res[0]["id"]]);

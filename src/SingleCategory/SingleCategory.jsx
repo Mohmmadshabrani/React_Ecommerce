@@ -181,7 +181,7 @@ const SingleCategory = () => {
           }}
         >
           {productData.map((prod) => (
-            <Link to={`/Detail/${prod.id}/${prod.name.split(' ').join('_')}`} key={prod._id}>
+            <Link to={`/Detail/${prod.id}/${prod.category}`} key={prod._id}>
               <ProductCard prod={prod} />
             </Link>
           ))}

@@ -54,15 +54,16 @@ const ProductDetail = () => {
   const addToCart = async (product) => {
     if (setProceed) {
       try {
+        let reqData = {
+          userId: authToken,
+          productId: product.id,
+          quantity: productQuantity,
+        };
         const { data } = await axios.post(
-          `${process.env.REACT_APP_ADD_CART}`,
-          { _id: product._id, quantity: productQuantity },
-          {
-            headers: {
-              Authorization: authToken,
-            },
-          }
+          `http://localhost:8000/src/Apis/cart/addToCart.php`,
+          reqData
         );
+
         setCart(data);
         setCart([...cart, product]);
         toast.success("Added To Cart", { autoClose: 500, theme: "colored" });
@@ -79,15 +80,16 @@ const ProductDetail = () => {
   const addToWhishList = async (product) => {
     if (setProceed) {
       try {
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_ADD_WISHLIST}`,
-          { _id: product._id },
-          {
-            headers: {
-              Authorization: authToken,
-            },
-          }
-        );
+        // const { data } = await axios.post(
+        //   `${process.env.REACT_APP_ADD_WISHLIST}`,
+        //   { _id: product._id },
+        //   {
+        //     headers: {
+        //       Authorization: authToken,
+        //     },
+        //   }
+        // );
+        let data = [];
         setWishlistData(data);
         setWishlistData([...wishlistData, product]);
         toast.success("Added To Wishlist", {
@@ -117,9 +119,7 @@ const ProductDetail = () => {
     }
   };
   const getSimilarProducts = async () => {
-    const { data } = await axios.post(``, {
-      userType: name,
-    });
+    const { data } = await axios.post(`http://localhost:8000/src/apis/users/GetCategoryProducts.php`, product.categroy_id);
     setSimilarProduct(data);
   };
   let data = [];
@@ -196,7 +196,7 @@ const ProductDetail = () => {
               <div className="detail-img-box">
                 <img
                   alt={product.name}
-                  src={product.image}
+                  src={product.mainPicture}
                   className="detail-img"
                 />
                 <br />
@@ -229,7 +229,7 @@ const ProductDetail = () => {
                 </div>
               </Typography>
               <Chip
-                label={product.price > 1000 ? "Upto 9% off" : "Upto 38% off"}
+                label={product.discount > 0 ? `Upto ${product.discount}% off` : ""}
                 variant="outlined"
                 sx={{
                   background: "#1976d2",

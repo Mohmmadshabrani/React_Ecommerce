@@ -5,7 +5,7 @@ header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content
 header("Content-type: application/json");
 
 try {
-  $conn = new PDO("mysql:host=localhost;port=3306;dbname=kebodb", "root", "");
+  $conn = new PDO("mysql:host=localhost;port=4306;dbname=kebodb", "root", "");
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
   echo "database error" . $e->getMessage();
