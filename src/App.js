@@ -25,7 +25,7 @@ import Admin from './Admin/admincom/appadmin.jsx';
 import Userview from './Admin/Components/userview';
 import AdminUedit from './Admin/Components/adminUedit';
 import AdminUD from './Admin/Components/adminUD';
-
+import Footer from "./Footer/Footer";
 
 
 

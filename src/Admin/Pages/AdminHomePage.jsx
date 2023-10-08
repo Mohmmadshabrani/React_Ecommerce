@@ -16,19 +16,19 @@ const AdminHomePage = () => {
     let navigate = useNavigate()
     let authToken = localStorage.getItem("Authorization")
     const getUser = async () => {
-        try {
-            const { data } = await axios.get("http://localhost:3000/src/apis/adminget.php", {
-                headers: {
-                    'Authorization': authToken
-                }
-            })
-            setUser(data)
-            setAdmin(true)
-        } catch (error) {
-            // !isAdmin && navigate('/')
-            toast.error(error.response.data, { autoClose: 500, theme: "colored" });
-        }
-}};
+      try {
+          const { data } = await axios.get("http://localhost:3000/src/apis/adminget.php", {
+              headers: {
+                  'Authorization': authToken
+              }
+          });
+          setUser(data);
+          setAdmin(true);
+      } catch (error) {
+          // !isAdmin && navigate('/')
+          toast.error(error.response.data, { autoClose: 500, theme: "colored" });
+      }
+  };
   return (
     <>
       {isAdmin && (
