@@ -80,16 +80,15 @@ const ProductDetail = () => {
   const addToWhishList = async (product) => {
     if (setProceed) {
       try {
-        // const { data } = await axios.post(
-        //   `${process.env.REACT_APP_ADD_WISHLIST}`,
-        //   { _id: product._id },
-        //   {
-        //     headers: {
-        //       Authorization: authToken,
-        //     },
-        //   }
-        // );
-        let data = [];
+        const { data } = await axios.post(
+          `http://localhost:8000/src/Apis/wishList/addToWishList.php`,
+          { _id: product._id },
+          {
+            headers: {
+              Authorization: authToken,
+            },
+          }
+        );
         setWishlistData(data);
         setWishlistData([...wishlistData, product]);
         toast.success("Added To Wishlist", {
@@ -110,7 +109,7 @@ const ProductDetail = () => {
     const data = {
       text: product.name,
       title: "e-shopit",
-      url: `https://e-shopit.vercel.app/Detail/type/${name}/${id}`,
+      url: `http://localhost:3000/Detail/${name}/${id}`,
     };
     if (navigator.canShare && navigator.canShare(data)) {
       navigator.share(data);
@@ -119,28 +118,20 @@ const ProductDetail = () => {
     }
   };
   const getSimilarProducts = async () => {
-    const { data } = await axios.post(`http://localhost:8000/src/apis/users/GetCategoryProducts.php`, product.categroy_id);
+    const { data } = await axios.post(
+      `http://localhost:8000/src/apis/users/GetCategoryProducts.php`,
+      name
+    );
     setSimilarProduct(data);
   };
-  let data = [];
-  if (name === "shoe") {
-    data.push(product?.brand, product?.gender, product?.category);
-  } else if (name === "book") {
-    data.push(product.author, product.category);
-  } else if (name === "cloths") {
-    data.push(product.category, name);
-  } else if (name === "electronics") {
-    data.push(product.category, name);
-  } else if (name === "jewelry") {
-    data.push(name);
-  }
+
   const increaseQuantity = () => {
     setProductQuantity((prev) => prev + 1);
     if (productQuantity >= 5) {
       setProductQuantity(5);
     }
   };
-  const decreaseQuantity = () => {
+  const decreaseQuantity = () => {  
     setProductQuantity((prev) => prev - 1);
     if (productQuantity <= 1) {
       setProductQuantity(1);
@@ -218,18 +209,17 @@ const ProductDetail = () => {
             </section>
           ) : (
             <section className="product-details">
+              {console.log("Producto", product)}
               <Typography variant="h4">{product.name}</Typography>
 
               <Typography>{product.description}</Typography>
-              <Typography>
-                <div className="chip">
-                  {data.map((item, index) => (
-                    <Chip label={item} key={index} variant="outlined" />
-                  ))}
-                </div>
-              </Typography>
+
               <Chip
-                label={product.discount > 0 ? `Upto ${product.discount}% off` : ""}
+                label={
+                  product.discount > 0
+                    ? `Upto ${product.discount}% off`
+                    : "Best Price"
+                }
                 variant="outlined"
                 sx={{
                   background: "#1976d2",
@@ -242,22 +232,18 @@ const ProductDetail = () => {
               <div style={{ display: "flex", gap: 20 }}>
                 <Typography variant="h6" color="red">
                   <s>
-                    {" "}
-                    ₹
-                    {product.price > 1000
-                      ? product.price + 1000
-                      : product.price + 300}
-                  </s>{" "}
+                    JD
+                    {product.price + product.price * 0.2}
+                  </s>
                 </Typography>
                 <Typography variant="h6" color="primary">
-                  ₹{product.price}
+                  JD{product.price}
                 </Typography>
               </div>
               <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  // background: 'red',
                   "& > *": {
                     m: 1,
                   },
@@ -350,7 +336,6 @@ const ProductDetail = () => {
           </Box>
         </Box>
       </Container>
-      <CopyRight sx={{ mt: 8, mb: 10 }} />
     </>
   );
 };

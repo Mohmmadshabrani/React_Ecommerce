@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   const { setCart } = useContext(ContextFunction);
   const [categories, setcategries] = useState([]);
+  const [Products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   let authToken = localStorage.getItem("Authorization");
@@ -24,6 +25,7 @@ const HomePage = () => {
   useEffect(() => {
     getCart();
     getCategories();
+    getProducts();
     window.scroll(0, 0);
   }, []);
 
@@ -39,11 +41,23 @@ const HomePage = () => {
       console.log(error);
     }
   };
+  const getProducts = async () => {
+    try {
+      setIsLoading(true);
+      const { data } = await axios.post(
+        `http://localhost:8000/src/apis/users/getDiscountedProducts.php`
+      );
+      setIsLoading(false);
+      setProducts(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getCart = async () => {
     if (authToken !== null) {
       const { data } = await axios.post(
-        "http://localhost:8000/src/apis/users/GetCartData.php",
+        "http://localhost:8000/src/apis/cart/GetCartData.php",
         authToken
       );
       setCart(data);
@@ -78,18 +92,18 @@ const HomePage = () => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
+      items: 4,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 900  },
+      breakpoint: { max: 1024, min: 900 },
       items: 2,
     },
     tablet_mobile: {
-      breakpoint: { max: 1024, min: 700  },
+      breakpoint: { max: 1024, min: 700 },
       items: 1.5,
     },
     mobile: {
-      breakpoint: { max: 700  , min: 0 },
+      breakpoint: { max: 700, min: 0 },
       items: 1,
     },
   };
@@ -117,18 +131,18 @@ const HomePage = () => {
         <Typography
           variant="h4"
           sx={{
-            textAlign: "left",
+            textAlign: "center",
             marginTop: 10,
-            marginBottom: 5,
             fontWeight: "bold",
             color: "#1976d2",
           }}
         >
           PRODUCTS ON DISCOUNT
         </Typography>
-        <Container maxWidth="l"
+        <Container
+          maxWidth="l"
           style={{
-            marginTop: 90,
+            marginTop: 50,
           }}
         >
           <MultiCarousel
@@ -142,23 +156,13 @@ const HomePage = () => {
             autoPlayInterval={2500}
             responsive={responsive}
           >
-            {categories.map((item) => (
-              <Link to={`/Detail/type/${item.id}`} key={item.name}>
-                <Box style={{ marginTop: 10, height: 300, width: 400 }}>
-                  <img
-                    src={item.image}
-                    loading="lazy"
-                    alt={item.name}
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </Box>
+            {Products.map((prod) => (
+              <Link to={`/Detail/${prod.id}/${prod.category_id}`} key={prod.id}>
+                <ProductCard prod={prod} />
               </Link>
             ))}
           </MultiCarousel>
+          {loading}
         </Container>
         <Typography
           variant="h3"
