@@ -41,38 +41,24 @@ const AdminLogin = () => {
     }
   }, []);
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    let emailRegex =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    e.preventDefault()
     try {
       if (!credentials.email && !credentials.password) {
-        toast.error("All fields are required", {
-          autoClose: 500,
-          theme: "colored",
-        });
-      } else if (!emailRegex.test(credentials.email)) {
-        toast.error("Please enter a valid email", {
-          autoClose: 500,
-          theme: "colored",
-        });
-      } else if (credentials.password.length < 5) {
-        toast.error("Please enter valid password", {
-          autoClose: 500,
-          theme: "colored",
-        });
-      } else if (credentials.email && credentials.password) {
-        const sendAuth = await axios.post('http://localhost:8000/src/apis/auth/loginAdmin.php', {
-          email: credentials.email,
-          password: credentials.password,
-        });
-        const receive = await sendAuth.data;
-        if (receive === true) {
-          toast.success("Login Successfully", {
-            autoClose: 500,
-            theme: "colored",
-          });
-          localStorage.setItem("Authorization", receive.authToken);
-          navigate("/admin/home");
+        toast.error("All fields are required", { autoClose: 500, theme: 'colored' })
+      }
+      
+      else if (credentials.email && credentials.password) {
+        const sendAuth = await axios.post("http://localhost/React_EcommerceA/src/Apis/adminLogin.php",
+          {
+            email: credentials.email,
+            password: credentials.password,
+          
+          })
+        const receive = await sendAuth.data
+        if (receive.success === true) {
+          toast.success("Login Successfully", { autoClose: 500, theme: 'colored' })
+          localStorage.setItem('Authorization', receive.authToken)
+          navigate('/admin/home')
         } else {
           toast.error("Invalid Credentials", {
             autoClose: 500,
@@ -83,7 +69,9 @@ const AdminLogin = () => {
     } catch (error) {
       toast.error("Invalid Credentials", { autoClose: 500, theme: "colored" });
     }
-  };
+
+  }
+
 
   return (
     <Container component="main" maxWidth="xs">

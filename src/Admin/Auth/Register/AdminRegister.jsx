@@ -29,8 +29,8 @@ const AdminRegister = () => {
     }
   }, [])
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    let phoneRegex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/gm;
+    e.preventDefault() 
+    let phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
     let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     try {
       if (!credentials.email && !credentials.firstName && !credentials.password && !credentials.phoneNumber && !credentials.lastName) {
@@ -49,7 +49,7 @@ const AdminRegister = () => {
         toast.error("Please enter password with more than 5 characters", { autoClose: 500, theme: 'colored' })
       }
       else if (credentials.email && credentials.firstName && credentials.lastName && credentials.phoneNumber && credentials.password) {
-        const sendAuth = await axios.post(process.env.REACT_APP_ADMIN_REGISTER,
+        const sendAuth = await axios.post("http://localhost:3000/src/apis/admin.php",
           {
             firstName: credentials.firstName,
             lastName: credentials.lastName,
