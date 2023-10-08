@@ -33,24 +33,28 @@ import AdminUD from './Admin/Components/adminUD';
 function App() {
   return (
     <>
-      <ToastContainer toastClassName='toastContainerBox' transition={Flip} position='top-center' />
+      <ToastContainer
+        toastClassName="toastContainerBox"
+        transition={Flip}
+        position="top-center"
+      />
       <Router>
         <DesktopNavigation />
-        <div className='margin'>
+        <div className="margin">
           <Routes>
             {/*User Routes  */}
-            <Route path='/' index element={<HomePage />} />
-            <Route path="/login" element={< Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/Detail/type/:cat/:id' element={<ProductDetail />} />
-            <Route path='product/type/:cat' element={<SingleCategory />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/wishlist' element={<Wishlist />} />
-            <Route path='/checkout' element={<CheckoutForm />} />
-            <Route path='/update' element={<UpdateDetails />} />
-            <Route path='/paymentsuccess' element={<PaymentSuccess />} />
-            <Route path='/forgotpassword' element={<ForgotPasswordForm />} />
-            <Route path='/user/reset/:id/:token' element={<AddNewPassword />} />
+            <Route path="/" index element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/Detail/:id/:name" element={<ProductDetail />} />
+            <Route path="product/:id/:name" element={<SingleCategory />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/checkout" element={<CheckoutForm />} />
+            <Route path="/update" element={<UpdateDetails />} />
+            <Route path="/paymentsuccess" element={<PaymentSuccess />} />
+            <Route path="/forgotpassword" element={<ForgotPasswordForm />} />
+            <Route path="/user/reset/:id/:token" element={<AddNewPassword />} />
 
             {/* Admin Routes */}
             <Route path="/admin/login" element={< AdminLogin />} />
@@ -66,10 +70,9 @@ function App() {
             
           </Routes>
         </div>
-        <MobileNavyigation />
-      </Router >
-
-
+        <Footer />
+        <MobileNavigation />
+      </Router>
     </>
   );
 }

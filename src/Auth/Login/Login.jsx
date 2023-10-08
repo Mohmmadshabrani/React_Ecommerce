@@ -60,13 +60,13 @@ const Login = () => {
         });
       } else if (credentials.email && credentials.password) {
 
-        const sendAuth = await axios.post('http://localhost:8000/src/apis/loginUser.php', {
+        const sendAuth = await axios.post('http://localhost:8000/src/apis/auth/loginUser.php', {
           email: credentials.email,
           password: credentials.password,
         });
 
         const receive = await sendAuth.data;
-        if (receive === true) {
+        if (receive.success === true) {
           toast.success("Login Successfully", {
             autoClose: 500,
             theme: "colored",
@@ -78,7 +78,7 @@ const Login = () => {
             autoClose: 500,
             theme: "colored",
           });
-          navigate("/");
+          navigate("/login");
         }
       }
     } catch (error) {
