@@ -16,7 +16,7 @@ const AdminHomePage = () => {
     let authToken = localStorage.getItem("Authorization")
     const getUser = async () => {
         try {
-            const { data } = await axios.get(`${process.env.REACT_APP_ADMIN_GET_ALL_USERS}`, {
+            const { data } = await axios.get("http://localhost:3000/src/apis/adminget.php", {
                 headers: {
                     'Authorization': authToken
                 }
@@ -24,7 +24,7 @@ const AdminHomePage = () => {
             setUser(data)
             setAdmin(true)
         } catch (error) {
-            !isAdmin && navigate('/')
+            // !isAdmin && navigate('/')
             toast.error(error.response.data, { autoClose: 500, theme: "colored" });
         }
     }

@@ -21,6 +21,10 @@ import AdminRegister from './Admin/Auth/Register/AdminRegister';
 import AdminHomePage from './Admin/Pages/AdminHomePage';
 import SingleUserPage from './Admin/Pages/SingleUserPage';
 import SingleProduct from './Admin/Pages/SingleProduct';
+import Admin from './Admin/admincom/appadmin.jsx';
+import Userview from './Admin/Components/userview';
+import AdminUedit from './Admin/Components/adminUedit';
+import AdminUD from './Admin/Components/adminUD';
 
 
 
@@ -54,9 +58,15 @@ function App() {
             <Route path='/admin/home' element={<AdminHomePage />} />
             <Route path='/admin/home/user/:id' element={<SingleUserPage />} />
             <Route path='/admin/home/product/:type/:id' element={<SingleProduct />} />
+
+            <Route path="/admin/new" element={< Admin />} />
+            <Route path="/admin/userview" element={< Userview />} />
+            <Route path="/admin/useredit/edit/:id" element={< AdminUedit />} />
+            <Route path="/admin/userdelete/delete/:id" element={< AdminUD />} />
+            
           </Routes>
         </div>
-        <MobileNavigation />
+        <MobileNavyigation />
       </Router >
 
 
