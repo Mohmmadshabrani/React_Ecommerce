@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
-function Deleteuser() {
+function Delete() {
     const { id } = useParams();
     const navigate = useNavigate();
     console.log('the id: ' + id);
     useEffect(() => {
-        const url = `http://localhost:8000/src/Apis/adminUsers/userdelete.php?id=${id}`;
+        const url = `http://localhost/admintest/connection/products/delete.php?id=${id}`;
         axios.delete(url)
             .then(response => {
                 console.log("User deleted:", response.data);
-                navigate('/admin/userview');
+                navigate('/products');
 
             })
             .catch(error => {
@@ -26,5 +26,4 @@ function Deleteuser() {
     );
 }
 
-        // const url = `http://localhost/projectreact/src/DB/userdelete.php?id=${id}`;
-export default Deleteuser;
+export default Delete;
