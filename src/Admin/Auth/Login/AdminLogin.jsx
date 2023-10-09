@@ -48,7 +48,7 @@ const AdminLogin = () => {
       }
       
       else if (credentials.email && credentials.password) {
-        const sendAuth = await axios.post("http://localhost/React_EcommerceA/src/Apis/adminLogin.php",
+        const sendAuth = await axios.post("http://localhost:8000/src/Apis/adminLogin.php",
           {
             email: credentials.email,
             password: credentials.password,

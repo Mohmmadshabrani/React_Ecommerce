@@ -29,7 +29,7 @@ function EditUserForm({  firstName, lastName, email, phoneNumber, password,displ
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    Axios.post(`http://localhost/React_EcommerceA/src/Apis/adminUsers/useredit.php?id=${id}`, formData)
+    Axios.post(`http://localhost/Kebo/src/Apis/adminUsers/useredit.php?id=${id}`, formData)
       .then((response) => {
         console.log('User updated successfully:', response.data);
         navigate('/admin/userview');

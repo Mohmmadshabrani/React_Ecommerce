@@ -17,7 +17,7 @@ const AdminHomePage = () => {
     let authToken = localStorage.getItem("Authorization")
     const getUser = async () => {
       try {
-          const { data } = await axios.get("http://localhost:3000/src/apis/adminget.php", {
+          const { data } = await axios.get("http://localhost:8000/src/apis/adminget.php", {
               headers: {
                   'Authorization': authToken
               }

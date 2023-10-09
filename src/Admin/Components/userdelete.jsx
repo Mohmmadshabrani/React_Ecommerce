@@ -7,7 +7,7 @@ function Deleteuser() {
     const navigate = useNavigate();
     console.log('the id: ' + id);
     useEffect(() => {
-        const url = `http://localhost/React_EcommerceA/src/Apis/adminUsers/userdelete.php?id=${id}`;
+        const url = `http://localhost:8000/src/Apis/adminUsers/userdelete.php?id=${id}`;
         axios.delete(url)
             .then(response => {
                 console.log("User deleted:", response.data);
@@ -26,5 +26,5 @@ function Deleteuser() {
     );
 }
 
-        // const url = `http://localhost/projectreact/src/DB/userdelete.php?id=${id}`;
+     
 export default Deleteuser;

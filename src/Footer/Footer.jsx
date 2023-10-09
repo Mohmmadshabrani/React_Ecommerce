@@ -1,10 +1,11 @@
-// src/componetns/Footer.tsx
+import { Typography, Link, IconButton, Box } from "@mui/material";
+import React from "react";
+import { FaDiscord } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 
-import React, { FC, ReactElement } from "react";
-import { Box, Container, Grid, Typography } from "@mui/material";
-import CopyRight from "../Components/CopyRight/CopyRight";
-
-export const Footer = () => {
+const Footer = (props) => {
   return (
     <Box
       sx={{
@@ -16,21 +17,50 @@ export const Footer = () => {
         paddingBottom: "1rem",
       }}
     >
-      <Container maxWidth="lg">
-        <Grid container direction="column" alignItems="center">
-          <Grid item xs={12}>
-            <Typography color="black" variant="h5">
-              React Starter App
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography color="textSecondary" variant="subtitle1">
-              {`${new Date().getFullYear()} | React | Material UI | React Router`}
-            </Typography>
-          </Grid>
-        </Grid>
-      </Container>
-      <CopyRight />
+      <Typography
+        variant="body1"
+        fontWeight="bold"
+        color="text.secondary"
+        align="center"
+        {...props}
+        style={{ color: "#1976d2" }}
+      >
+        You can follow us in : <br />
+        <Link
+          href="https://www.discord.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconButton>
+            <FaDiscord />
+          </IconButton>
+        </Link>
+        <Link
+          href="https://www.linkedin.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconButton>
+            <FaLinkedin />
+          </IconButton>
+        </Link>
+        <Link
+          href="https://www.google.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconButton>
+            <FaGoogle />
+          </IconButton>
+        </Link>
+        <Link href="mailto:halahisham044@gmail.com">
+          <IconButton>
+            <FaEnvelope />
+          </IconButton>
+        </Link>
+        <br />
+        {new Date().getFullYear()} © Developed By Kebo Team{" "}
+      </Typography>
     </Box>
   );
 };

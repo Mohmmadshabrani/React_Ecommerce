@@ -1,12 +1,11 @@
 import React from 'react';
-import './contactUs.css'; // Import your CSS file
-import { FaEnvelope, FaPhone } from 'react-icons/fa'; // Import icons from a library like react-icons
-import ww_jpg from '../image/ww.jpg'; // Import your image
+import './contactUs.css';
+import { FaEnvelope, FaPhone } from 'react-icons/fa'; 
+import ww_jpg from '../image/ww.jpg'; 
 
 const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., send an email or store in a database)
   };
 
   return (
