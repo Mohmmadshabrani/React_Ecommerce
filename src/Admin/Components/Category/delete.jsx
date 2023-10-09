@@ -2,17 +2,19 @@ import React, { useEffect } from "react";
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
-function Deleteuser() {
+function CategoryDelete() {
     const { id } = useParams();
     const navigate = useNavigate();
-    console.log('the id: ' + id);
+
     useEffect(() => {
-        const url = `http://localhost:8000/src/Apis/adminUsers/userdelete.php?id=${id}`;
+        const url = `http://localhost:8000/src/Apis/adminCategory/categorydelete.php?id=${id}`;
+
         axios.delete(url)
             .then(response => {
                 console.log("User deleted:", response.data);
-                navigate('/admin/userview');
 
+
+                navigate('/admin/Categoryview');
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -21,10 +23,9 @@ function Deleteuser() {
 
     return (
         <div>
-            Deleting User...
+         Category is deleted ...
         </div>
     );
 }
 
-        // const url = `http://localhost/projectreact/src/DB/userdelete.php?id=${id}`;
-export default Deleteuser;
+export default CategoryDelete;

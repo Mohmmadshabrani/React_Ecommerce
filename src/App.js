@@ -26,6 +26,13 @@ import Userview from './Admin/Components/userview';
 import AdminUedit from './Admin/Components/adminUedit';
 import AdminUD from './Admin/Components/adminUD';
 import Footer from "./Footer/Footer";
+import Categoryview from "./Admin/Components/Category/categoryview";
+import CategoryEdit from "./Admin/Components/Category/categoryedit";
+import Categoryadd from "./Admin/Components/Category/categoryadd";
+import Categorydelete from "./Admin/Components/Category/categorydelete";
+import Productsview from "./Admin/Components/Products/Productsview";
+import ProductsEdit from "./Admin/Components/Products/Productsedit";
+import Productsdelete from "./Admin/Components/Products/Productsdelete";
 
 
 
@@ -67,13 +74,28 @@ function App() {
             <Route path="/admin/userview" element={< Userview />} />
             <Route path="/admin/useredit/edit/:id" element={< AdminUedit />} />
             <Route path="/admin/userdelete/delete/:id" element={< AdminUD />} />
+
+            <Route path="/admin/Categoryview" element={< Categoryview />} />
+            <Route path="/admin/Categoryadd/" element={< Categoryadd />} />
+            <Route path="/admin/Categoryedit/edit/:id" element={< CategoryEdit />} />
+            <Route path="/admin/Categorydelete/delete/:id" element={< Categorydelete />} />
+            
+            <Route path="/admin/Productsview" element={< Productsview />} />
+            <Route path="/admin/Productsedit/edit/:id" element={< ProductsEdit />} />
+            <Route path="/admin/Productsdelete/delete/:id" element={< Productsdelete />} />
             
           </Routes>
         </div>
         <Footer />
         <MobileNavigation />
       </Router>
+      <Router>
+      <Routes>
+      
+      </Routes>
+      </Router>
     </>
   );
 }
 export default App;
+
