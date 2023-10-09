@@ -1,0 +1,95 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Style headings */
+  h1 {
+    font-size: 24px;
+    color: #333;
+    margin-left: 4%;
+  }
+  
+  h2 {
+    font-size: 20px;
+    color: #333;
+    margin-left: 2%;
+  }
+  
+  h4{ margin-left: 4%;}
+  /* Style paragraphs */
+  p {
+    font-size: 16px;
+    color: #666;
+    margin-left: 4%;
+  }
+  
+  /* Style the contact details list */
+  .contact-info{margin-left: 4%;}
+  
+  /* Style the form */
+  form {
+    margin-top: 5%;
+    margin-left: 4%;
+  }
+  
+  /* Style form labels */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+   
+  }
+  
+  /* Style form inputs and textarea */
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Style the submit button */
+  button[type="submit"] {
+    background-color: #1976d2;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Style the submit button on hover */
+  button[type="submit"]:hover {
+    background-color: #135999;
+  }
+  
+
+
+
+  /* ContactUs.css */
+.contact-container {
+  display: flex;
+  align-items: center;
+}
+
+.contact-content {
+  flex: 1;
+}
+
+.background-image {
+  flex: 1;
+  text-align: center;
+}
+
+.background-image img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 2%;
+}

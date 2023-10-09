@@ -22,7 +22,8 @@ import AdminHomePage from "./Admin/Pages/AdminHomePage";
 import SingleUserPage from "./Admin/Pages/SingleUserPage";
 import SingleProduct from "./Admin/Pages/SingleProduct";
 import Footer from "./Footer/Footer";
-
+import AboutUs from "./About/About";
+import ContactUs from "./Contact/Contact";
 function App() {
   return (
     <>
@@ -48,7 +49,8 @@ function App() {
             <Route path="/paymentsuccess" element={<PaymentSuccess />} />
             <Route path="/forgotpassword" element={<ForgotPasswordForm />} />
             <Route path="/user/reset/:id/:token" element={<AddNewPassword />} />
-
+            <Route path="/About"  element={<AboutUs />}/>
+            <Route path="/Contact"  element={<ContactUs />}/>
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/home" element={<AdminHomePage />} />
