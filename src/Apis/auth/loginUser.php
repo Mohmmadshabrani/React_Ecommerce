@@ -8,7 +8,7 @@ require_once '../connection.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
-$stmt = $conn->prepare('SELECT * FROM users WHERE :email = email and :password = password');
+$stmt = $conn->prepare('SELECT * FROM users WHERE :email = email and password = :password');
 
 $stmt->bindParam(':email', $data->email);
 $stmt->bindParam(':password', $data->password);

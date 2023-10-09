@@ -26,7 +26,8 @@ import Userview from './Admin/Components/userview';
 import AdminUedit from './Admin/Components/adminUedit';
 import AdminUD from './Admin/Components/adminUD';
 import Footer from "./Footer/Footer";
-
+import AboutUs from "./About/About";
+import ContactUs from "./Contact/Contact";
 
 
 
@@ -55,7 +56,8 @@ function App() {
             <Route path="/paymentsuccess" element={<PaymentSuccess />} />
             <Route path="/forgotpassword" element={<ForgotPasswordForm />} />
             <Route path="/user/reset/:id/:token" element={<AddNewPassword />} />
-
+            <Route path="/About"  element={<AboutUs />}/>
+            <Route path="/Contact"  element={<ContactUs />}/>
             {/* Admin Routes */}
             <Route path="/admin/login" element={< AdminLogin />} />
             <Route path='/admin/register' element={<AdminRegister />} />

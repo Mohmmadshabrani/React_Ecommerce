@@ -64,6 +64,22 @@ const DesktopNavigation = () => {
               </NavLink>
             </li> */}
 
+              <li className="nav-links">
+              <NavLink to='/About'>
+                <span className='nav-icon-span'> About</span>
+              </NavLink>
+            </li>
+
+            <li className="nav-links">
+              <NavLink to='/Contact'>
+                <span className='nav-icon-span'> Contact</span>
+              </NavLink>
+            </li>
+
+
+
+
+
             <li className="nav-links">
               <Tooltip title="Cart">
                 <NavLink to="/cart">
