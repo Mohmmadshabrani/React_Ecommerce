@@ -9,7 +9,7 @@ function Users() {
   const navigate = useNavigate(); 
  
   useEffect(() => {
-    Axios.get("http://localhost/Kebo/src/Apis/adminUsers/usersget.php")
+    Axios.get("http://localhost:8000/src/Apis/adminUsers/usersget.php")
       .then((response) => {
         console.log("Response", response.data);
         setUserData(response.data);
@@ -54,8 +54,8 @@ function Users() {
           password: "",
           phoneNumber: "",
         });
-        navigate('/admin/userview');
-        
+        // navigate('/admin/userview');
+        window.location.reload();
 
       })
       .catch((error) => {
@@ -79,7 +79,7 @@ function Users() {
           </div>
           <div className="col mb-4">
             <button
-              className="btn btn-outline-secondary"
+            className="btn btn-success add-new"
               onClick={toggleAddForm}
             >
               Add New User
@@ -145,7 +145,7 @@ function Users() {
                
                 <input
                   type="submit"
-                  className="btn btn-outline-secondary"
+                  className="btn btn-success add-new"
                   value="Add"
                   name="addnewuser"
                 />
