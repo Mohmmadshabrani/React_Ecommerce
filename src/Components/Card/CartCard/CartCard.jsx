@@ -11,16 +11,15 @@ const CartCard = ({ product, removeFromCart }) => {
             <Link to={`/Detail/type/${product?.productId?.type}/${product?.productId?._id}`}>
             <CardActionArea className={styles.card_action} >
                 <Box className={styles.img_box}  >
-                        <img alt={product?.productId?.name} loading='lazy' src={product?.productId?.image} className={styles.img} />
+                        <img alt={product?.name} loading='lazy' src={product?.mainPicture} className={styles.img} />
                 </Box>
                 <CardContent>
                     <Typography gutterBottom variant="h6" sx={{ textAlign: "center" }}>
-                        {product?.productId?.name.length > 20 ? product?.productId?.name.slice(0, 20) + '...' : product?.productId?.name}
+                        asdasd{product?.name.length > 20 ? product?.name.slice(0, 20) + '...' : product?.name}
                     </Typography>
                     <Box
                         sx={{
                             display: 'flex',
-                            // background: 'red',
                             justifyContent:'center',
                             '& > *': {
                                 m: 1,
