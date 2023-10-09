@@ -40,7 +40,8 @@ nav ul li a {
     padding: 8px 18px;
     border-radius: 10px;
     font-weight: 600;
-
+    text-decoration: none;
+    color: #000;
 }
 
 .nav-icon-span {

@@ -4,18 +4,20 @@ import { forwardRef } from "react";
 
 const getCart = async (setProceed, setCart, authToken) => {
   if (setProceed) {
-    const { data } = await axios.post("http://localhost:8000/src/apis/users/GetCartData.php", authToken);
+    const { data } = await axios.post(
+      "http://localhost:8000/src/apis/cart/GetCartData.php",
+      authToken
+    );
     setCart(data);
   }
 };
 
 const getWishList = async (setProceed, setWishlistData, authToken) => {
   if (setProceed) {
-    const { data } = await axios.get(`http://localhost:8000/src/apis/users/GetCartData.php`, {
-      headers: {
-        Authorization: authToken,
-      },
-    });
+    const { data } = await axios.get(
+      `http://localhost:8000/src/apis/cart/GetCartData.php`,
+      authToken
+    );
     setWishlistData(data);
   }
 };
@@ -42,18 +44,29 @@ const handleClose = (setOpenAlert) => {
 };
 const getAllProducts = async (setData) => {
   try {
-    const { data } = await axios.get('http://localhost:8000/src/apis/users/GetCartData.php');
+    const { data } = await axios.get(
+      "http://localhost:8000/src/apis/cart/GetCartData.php"
+    );
     setData(data);
   } catch (error) {
     console.log(error);
   }
 };
 
+// const getSingleProduct = async (setProduct, id, setLoading) => {
+//   const { data } = await axios.get(
+//     `http://localhost:8000/src/apis/carts/GetCartData.php` ,id
+//   );
+//   setProduct(data);
+//   setLoading(false);
+// };
 const getSingleProduct = async (setProduct, id, setLoading) => {
-  const { data } = await axios.get(
-    `http://localhost:8000/src/apis/users/GetCartData.php`
+  const { data } = await axios.post(
+    `http://localhost:8000/src/apis/users/getSingleProduct.php`,
+    id
   );
   setProduct(data);
+  console.log(1);
   setLoading(false);
 };
 
