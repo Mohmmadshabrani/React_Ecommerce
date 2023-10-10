@@ -46,7 +46,7 @@ function ProductsGet() {
     useEffect(() => {
       axios
         .get(
-          "http://localhost:8000/src/Apis/adminCategory/categoryget.php"
+          "http://localhost/React_EcommerceA/src/Apis/adminCategory/categoryget.php"
         )
         .then((response) => {
           setCategoriesSSSData(response.data);
@@ -57,7 +57,7 @@ function ProductsGet() {
     }, []);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/src/Apis/adminProducts/Productget.php")
+        axios.get("http://localhost/React_EcommerceA/src/Apis/adminProducts/Productget.php")
           .then((response) => {
             setData(response.data);
             setProductsData(response.data);
@@ -81,7 +81,7 @@ function ProductsGet() {
         formData.append('description', inputdes);
         // formData.append('sales', inputsales);
         console.log(inputcata);
-        axios.post('http://localhost:8000/src/Apis/adminProducts/Productadd.php', formData)
+        axios.post('http://localhost/React_EcommerceA//src/Apis/adminProducts/Productadd.php', formData)
           .then((response) => {
             console.log('File uploaded:', response.data);
             // window.location.reload();
@@ -204,7 +204,7 @@ function ProductsGet() {
               <tr>
                 <th>ID</th>
                 <th>Products Name </th>
-                <th>category_id</th>
+                <th>category Name</th>
                 <th>Price</th>
                 <th>Discount</th>
                 <th>Description</th>
@@ -228,7 +228,7 @@ function ProductsGet() {
                   <td>{item.price}</td>
                   <td>{item.discount}</td>
                   <td>{item.description}</td>
-                  <td>{item.id}</td>
+                  
 
                   
                   <td>

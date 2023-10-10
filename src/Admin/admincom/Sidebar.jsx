@@ -35,7 +35,11 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
                     <BsPeopleFill className='icon'/> Users
                 </a>
             </li>
-
+            <li className='sidebar-list-item'>
+                <a href="/admin/Ordersview">
+                    <BsListCheck className='icon'/> Order
+                </a>
+            </li>
         </ul>
     </aside>
   )

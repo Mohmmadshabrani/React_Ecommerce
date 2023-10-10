@@ -2,19 +2,19 @@ import React, { useEffect } from "react";
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
-function ProductsDelete() {
+function CategoryDelete() {
     const { id } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
-        const url = `http://localhost/React_EcommerceA/src/Apis/adminProducts/Productdelete.php?id=${id}`;
+        const url = `http://localhost/React_EcommerceA/src/Apis/adminOrder/Orderdelete.php?id=${id}`;
 
         axios.delete(url)
             .then(response => {
                 console.log("User deleted:", response.data);
 
 
-                navigate('/admin/Productsview');
+                navigate('/admin/Ordersview');
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -23,9 +23,9 @@ function ProductsDelete() {
 
     return (
         <div>
-        Products is deleted ...
+         Order is deleted ...
         </div>
     );
 }
 
-export default ProductsDelete;
+export default CategoryDelete;
