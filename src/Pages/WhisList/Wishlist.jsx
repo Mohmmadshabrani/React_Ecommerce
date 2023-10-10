@@ -16,7 +16,6 @@ import {
 import { AiFillCloseCircle, AiOutlineLogin } from "react-icons/ai";
 import { EmptyCart } from "../../Assets/Images/Image";
 import { Transition } from "../../Constants/Constant";
-import CopyRight from "../../Components/CopyRight/CopyRight";
 
 const Wishlist = () => {
   const { wishlistData, setWishlistData } = useContext(ContextFunction);
@@ -44,11 +43,9 @@ const Wishlist = () => {
       try {
         const deleteProduct = await axios.post(
           `http://localhost:8000/src/apis/wishList/RemoveFromWishList.php`,
-          {id: authToken , product_id :product.id}
+          { id: authToken, product_id: product.id }
         );
-        setWishlistData(
-          wishlistData.filter((c) => c.id !== product.id)
-        );
+        setWishlistData(wishlistData.filter((c) => c.id !== product.id));
         toast.success("Removed From Wishlist", {
           autoClose: 500,
           theme: "colored",
@@ -108,7 +105,7 @@ const Wishlist = () => {
             paddingBottom: 20,
           }}
         >
-          {wishlistData
+          {Array.isArray(wishlistData)
             ? wishlistData.map((product) => (
                 <CartCard
                   product={product}

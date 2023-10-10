@@ -60,7 +60,7 @@ const ProductReview = ({ authToken, setProceed, setOpenAlert, id }) => {
   };
   useEffect(() => {
     fetchReviews();
-  }, id);
+  }, [id]);
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();

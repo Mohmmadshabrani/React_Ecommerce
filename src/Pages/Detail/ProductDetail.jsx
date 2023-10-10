@@ -318,10 +318,10 @@ const ProductDetail = () => {
             sx={{ display: "flex", overflowX: "auto", marginBottom: 10 }}
           >
             {similarProduct
-              .filter((prod) => prod._id !== id)
+              .filter((prod) => prod.id !== id)
               .map((prod) => (
                 <Link
-                  to={`/Detail/type/${prod.type}/${prod._id}`}
+                  to={`/Detail/${prod.id}/${name}`}
                   key={prod._id}
                 >
                   <ProductCard prod={prod} />
