@@ -33,6 +33,8 @@ import Categorydelete from "./Admin/Components/Category/categorydelete";
 import Productsview from "./Admin/Components/Products/Productsview";
 import ProductsEdit from "./Admin/Components/Products/Productsedit";
 import Productsdelete from "./Admin/Components/Products/Productsdelete";
+import Ordersview from "./Admin/Components/Order/Orderview";
+import Ordersdelete from "./Admin/Components/Order/Orderdelete.jsx";
 
 import AboutUs from "./About/About";
 import ContactUs from "./Contact/Contact";
@@ -87,6 +89,8 @@ function App() {
             <Route path="/admin/Productsedit/edit/:id" element={< ProductsEdit />} />
             <Route path="/admin/Productsdelete/delete/:id" element={< Productsdelete />} />
             
+            <Route path="/admin/Ordersview" element={< Ordersview />} />
+            <Route path="/admin/Ordersdelete/delete/:id" element={< Ordersdelete />} />
           </Routes>
         </div>
         <Footer />

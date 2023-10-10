@@ -16,7 +16,7 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
 
         <ul className='sidebar-list'>
             <li className='sidebar-list-item'>
-                <a href="">
+                <a href="/admin/new">
                     <BsGrid1X2Fill className='icon'/> Dashboard
                 </a>
             </li>
@@ -36,20 +36,12 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
                 </a>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
-                    <BsListCheck className='icon'/> Inventory
+                <a href="/admin/Ordersview">
+                    <BsListCheck className='icon'/> Order
                 </a>
             </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsMenuButtonWideFill className='icon'/> Reports
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsFillGearFill className='icon'/> Setting
-                </a>
-            </li>
+            
+            
         </ul>
     </aside>
   )
