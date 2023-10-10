@@ -176,7 +176,7 @@ const CommentCard = ({ userReview, setReviews, reviews, fetchReviews }) => {
           {date} {time}
         </p>
 
-        {(authUser === userReview?.user?._id || isAdmin) && (
+        {(authUser === userReview?.user?.id ) && (
           <Box sx={{ height: 20, transform: "translateZ(0px)", flexGrow: 1 }}>
             <SpeedDial
               ariaLabel="SpeedDial basic example"
