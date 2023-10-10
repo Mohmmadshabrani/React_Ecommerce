@@ -25,7 +25,7 @@ const AdminHomePage = () => {
           setUser(data);
           setAdmin(true);
       } catch (error) {
-          // !isAdmin && navigate('/')
+          !isAdmin && navigate('/')
           toast.error(error.response.data, { autoClose: 500, theme: "colored" });
       }
   };

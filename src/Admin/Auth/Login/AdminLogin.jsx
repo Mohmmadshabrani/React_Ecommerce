@@ -58,7 +58,7 @@ const AdminLogin = () => {
         if (receive.success === true) {
           toast.success("Login Successfully", { autoClose: 500, theme: 'colored' })
           localStorage.setItem('Authorization', receive.authToken)
-          navigate('/admin/home')
+          navigate('/admin/new')
         } else {
           toast.error("Invalid Credentials", {
             autoClose: 500,

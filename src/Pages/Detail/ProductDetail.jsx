@@ -81,7 +81,7 @@ const ProductDetail = () => {
       try {
         const { data } = await axios.post(
           `http://localhost:8000/src/Apis/wishList/addToWishList.php`,
-          { user_id: authToken , product_id: product.id}
+          { user_id: authToken, product_id: product.id }
         );
         setWishlistData(data);
         setWishlistData([...wishlistData, product]);

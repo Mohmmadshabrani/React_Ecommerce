@@ -42,7 +42,8 @@ function App() {
   const [isAdminRoute, setIsAdminRoute] = useState(false);
 
   useEffect(() => {
-    setIsAdminRoute(window.location.pathname.startsWith("/ADMIN"));
+    let st = window.location.pathname.startsWith("/ADMIN") || window.location.pathname.startsWith("/admin")
+    setIsAdminRoute(st);
   }, []);
   return (
     <>

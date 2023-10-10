@@ -28,18 +28,11 @@ function ProductsGet() {
     const onpriChange = (event) => {
         pri(event.target.value);
       };
-    const oncataChange = (event) => {
-        scata(event.target.value);
-      };
+
     const onqunChange = (event) => {
         qun(event.target.value);
       };
 
-
-      
-    // const onsalesChange = (event) => {
-    //     sales(event.target.value);
-    //   };
     const [selectedCategoryId, setSelectedCategoryId] = useState("");
     const [ProductsData, setProductsData] = useState([]);
     const [categorydata, setcategoryData] = useState([]);
@@ -87,7 +80,7 @@ function ProductsGet() {
         formData.append('discount', inputqun);
         formData.append('description', inputdes);
         // formData.append('sales', inputsales);
-        console.log(inputValue);
+        console.log(inputcata);
         axios.post('http://localhost:8000/src/Apis/adminProducts/Productadd.php', formData)
           .then((response) => {
             console.log('File uploaded:', response.data);
@@ -177,7 +170,7 @@ function ProductsGet() {
                           name="category_id"
                           value={selectedCategoryId}
                           onChange={(e) =>
-                            setSelectedCategoryId(e.target.value)
+                            scata(e.target.value)
                           }
                         >
                           <option value="">Select a category</option>
@@ -225,7 +218,7 @@ function ProductsGet() {
                   <td>{item.id}</td>
                   <td>
                     <img
-                      src={`/img/products/${item.mainPicture}`}
+                      src={`${item.mainPicture}`}
                       alt="mainPicture"
                       style={{ width: "200px", height: "200px" }}
                     />
