@@ -48,7 +48,7 @@ const AdminLogin = () => {
       }
       
       else if (credentials.email && credentials.password) {
-        const sendAuth = await axios.post("http://localhost/React_EcommerceA/src/Apis/adminLogin.php",
+        const sendAuth = await axios.post("http://localhost:8000/src/Apis/adminLogin.php",
           {
             email: credentials.email,
             password: credentials.password,
@@ -58,7 +58,7 @@ const AdminLogin = () => {
         if (receive.success === true) {
           toast.success("Login Successfully", { autoClose: 500, theme: 'colored' })
           localStorage.setItem('Authorization', receive.authToken)
-          navigate('/admin/home')
+          navigate('/admin/new')
         } else {
           toast.error("Invalid Credentials", {
             autoClose: 500,

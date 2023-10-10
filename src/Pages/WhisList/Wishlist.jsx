@@ -43,11 +43,11 @@ const Wishlist = () => {
     if (setProceed) {
       try {
         const deleteProduct = await axios.post(
-          `http://localhost:8000/src/apis/wishList/GetWishListData.php`,
-          authToken
+          `http://localhost:8000/src/apis/wishList/RemoveFromWishList.php`,
+          {id: authToken , product_id :product.id}
         );
         setWishlistData(
-          wishlistData.filter((c) => c.productId._id !== product.productId._id)
+          wishlistData.filter((c) => c.id !== product.id)
         );
         toast.success("Removed From Wishlist", {
           autoClose: 500,
@@ -108,13 +108,15 @@ const Wishlist = () => {
             paddingBottom: 20,
           }}
         >
-          {wishlistData.map((product) => (
-            <CartCard
-              product={product}
-              removeFromCart={removeFromWishlist}
-              key={product._id}
-            />
-          ))}
+          {wishlistData
+            ? wishlistData.map((product) => (
+                <CartCard
+                  product={product}
+                  removeFromCart={removeFromWishlist}
+                  key={product._id}
+                />
+              ))
+            : "No products in wishlist"}
         </Container>
       )}
 

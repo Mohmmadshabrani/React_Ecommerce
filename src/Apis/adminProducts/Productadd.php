@@ -8,45 +8,6 @@ require_once '../connection.php';
 
 ?>
 <?php 
-// if (isset($_FILES["image"])) {
-//     $file = $_FILES["image"];
-  
-//     if ($file["error"] === UPLOAD_ERR_OK) {
-//         $data = json_decode(file_get_contents('php://input'));
-        
-//         $data = $data->text;
-//         $uploadDirectory = '../../../public/img/products/';
-  
-//         $uniqueFilename =  $file["name"];
-  
-//         $targetFilePath = $uploadDirectory . $uniqueFilename;
-  
-//         if (move_uploaded_file($file["tmp_name"], $targetFilePath)) {
-//             echo "File uploaded successfully. Stored as: " . $uniqueFilename;
-  
-//             $stmt = $conn->prepare("INSERT INTO products (name, category_id, price, mainPicture, discount, description) VALUES (:name, :category_id, :price, :image, :discount, :description)");
-//             $stmt->bindParam(':name', $data->name);
-//             $stmt->bindParam(':category_id', $data->category_id);
-//             $stmt->bindParam(':price', $data->price);
-//             $stmt->bindParam(':image', $uniqueFilename);
-//             $stmt->bindParam(':discount', $data->discount);
-//             $stmt->bindParam(':description', $data->description);
-           
-//             $name = $_POST['text'];
-//             if ($stmt->execute()) {
-//                 echo "Data inserted into the database successfully.";
-//             } 
-    
-//         } else {
-//             echo "Sorry, there was an error uploading your file.";
-//         }
-//     } else {
-//         echo "Upload error. Error code: " . $file["error"];
-//     }
-//   } else {
-//     echo "No file uploaded.";
-//   }
-
 if (isset($_FILES["image"]) && isset($_FILES["image"]["error"])) {
     $file = $_FILES["image"];
 
@@ -68,6 +29,7 @@ if (isset($_FILES["image"]) && isset($_FILES["image"]["error"])) {
             $discount = $_POST['discount']; 
             $description = $_POST['description'];
             // $sales = $_POST['sales']; 
+            $uniqueFilename = "/img/products/" . $uniqueFilename;
             var_dump($uniqueFilename);
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':category_id', $category_id);

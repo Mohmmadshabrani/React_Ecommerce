@@ -15,7 +15,7 @@ const getCart = async (setProceed, setCart, authToken) => {
 const getWishList = async (setProceed, setWishlistData, authToken) => {
   if (setProceed) {
     const { data } = await axios.get(
-      `http://localhost:8000/src/apis/cart/GetCartData.php`,
+      `http://localhost:8000/src/apis/wishList/GetWishListData.php`,
       authToken
     );
     setWishlistData(data);
@@ -53,13 +53,6 @@ const getAllProducts = async (setData) => {
   }
 };
 
-// const getSingleProduct = async (setProduct, id, setLoading) => {
-//   const { data } = await axios.get(
-//     `http://localhost:8000/src/apis/carts/GetCartData.php` ,id
-//   );
-//   setProduct(data);
-//   setLoading(false);
-// };
 const getSingleProduct = async (setProduct, id, setLoading) => {
   const { data } = await axios.post(
     `http://localhost:8000/src/apis/users/getSingleProduct.php`,

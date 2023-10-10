@@ -26,5 +26,5 @@ function Deleteuser() {
     );
 }
 
-        // const url = `http://localhost/projectreact/src/DB/userdelete.php?id=${id}`;
+     
 export default Deleteuser;

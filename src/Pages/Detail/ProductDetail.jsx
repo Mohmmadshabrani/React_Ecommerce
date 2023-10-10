@@ -31,7 +31,6 @@ import { ContextFunction } from "../../Context/Context";
 import ProductReview from "../../Components/Review/ProductReview";
 import ProductCard from "../../Components/Card/Product Card/ProductCard";
 import { Transition, getSingleProduct } from "../../Constants/Constant";
-import CopyRight from "../../Components/CopyRight/CopyRight";
 
 const ProductDetail = () => {
   const { cart, setCart, wishlistData, setWishlistData } =
@@ -82,12 +81,7 @@ const ProductDetail = () => {
       try {
         const { data } = await axios.post(
           `http://localhost:8000/src/Apis/wishList/addToWishList.php`,
-          { _id: product._id },
-          {
-            headers: {
-              Authorization: authToken,
-            },
-          }
+          { user_id: authToken, product_id: product.id }
         );
         setWishlistData(data);
         setWishlistData([...wishlistData, product]);
@@ -131,7 +125,7 @@ const ProductDetail = () => {
       setProductQuantity(5);
     }
   };
-  const decreaseQuantity = () => {  
+  const decreaseQuantity = () => {
     setProductQuantity((prev) => prev - 1);
     if (productQuantity <= 1) {
       setProductQuantity(1);

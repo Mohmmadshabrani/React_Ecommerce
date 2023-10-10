@@ -36,7 +36,7 @@ const Cart = () => {
   useEffect(() => {
     if (setProceed) {
       getCart();
-      getPreviousOrder();
+      // getPreviousOrder();
     } else {
       setOpenAlert(true);
     }
@@ -48,7 +48,7 @@ const Cart = () => {
       setTotal(
         cart.reduce(
           (acc, curr) =>
-            acc + (curr.productId?.price * curr.quantity + shippingCoast),
+            acc + (curr.price * curr.quantity ),
           0
         )
       );
@@ -72,34 +72,21 @@ const Cart = () => {
   const handleToLogin = () => {
     navigate("/login");
   };
-  const getPreviousOrder = async () => {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_GET_PREVIOUS_ORDER}`,
-      {
-        headers: {
-          Authorization: authToken,
-        },
-      }
-    );
-    setPreviousOrder(data);
-  };
+
 
   const removeFromCart = async (product) => {
     if (setProceed) {
+      console.log(product);
       try {
-        const response = await axios.delete(
-          `${process.env.REACT_APP_DELETE_CART}/${product._id}`,
-          {
-            headers: {
-              Authorization: authToken,
-            },
-          }
+        const response = await axios.post(
+          `http://localhost:8000/src/apis/cart/removeFromCart.php`,
+          { id: authToken, product_id: product.id }
         );
         toast.success("Removed From Cart", {
           autoClose: 500,
           theme: "colored",
         });
-        setCart(cart.filter((c) => c.productId._id !== product.productId._id));
+        setCart(cart.filter((c) => c.id !== product.id));
       } catch (error) {
         toast.error("Something went wrong", {
           autoClose: 500,
@@ -217,7 +204,7 @@ const Cart = () => {
         {previousOrder.map((product) =>
           product.productData.map((prod) => (
             <Link
-              to={`/Detail/type/${prod.productId.type}/${prod.productId._id}`}
+             to={`/Detail/${prod.id}/${prod.category_id}`}
               key={prod._id}
             >
               <ProductCard prod={prod.productId} />

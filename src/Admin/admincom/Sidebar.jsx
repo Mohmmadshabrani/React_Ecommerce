@@ -40,8 +40,6 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
                     <BsListCheck className='icon'/> Order
                 </a>
             </li>
-            
-            
         </ul>
     </aside>
   )
